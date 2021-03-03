@@ -46,3 +46,11 @@ def randomSnack(rows, items):
 def main():
     pass
     
+rows =
+w =
+h =
+
+cube.rows = rows
+cube.w = w
+
+main()
