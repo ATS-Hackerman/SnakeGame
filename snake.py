@@ -34,7 +34,7 @@ class snake(object):
         pass
 
 
-    def addCube(self):
+    def add_cube(self):
         pass
 
 
@@ -42,23 +42,36 @@ class snake(object):
         pass
 
 
-def drawGrid(w, rows, surface):
-    pass
+def draw_grid(w, rows, surface):
+    size_btwn = w // rows
+
+    x = 0
+    y = 0
+    for l in range(rows):
+        x = x + size_btwn
+        y = y + size_btwn
+
+        pygame.draw.line(surface, (255, 255, 255), (x, 0), (x, w))
+        pygame.draw.line(surface, (255, 255, 255), (0, y), (w, y))
 
 
-def redrawWindow(surface):
-    pass
+def redraw_window(surface):
+    global rows, width
+    surface.fill((0, 0, 0))
+    draw_grid(width, rows, surface)
+    pygame.display.update()
 
 
-def randomSnack(rows, items):
+def random_snack(rows, items):
     pass
 
 
 def main():
+    global width, rows
     width = 500
     height = 500
     rows = 20
-    win = pygame.displa.set_mode((width, height))
+    win = pygame.display.set_mode((width, height))
     s = snake ((255,0,0), (10, 10))
     flag = True
 
@@ -67,7 +80,7 @@ def main():
     while flag:
         pygame.time.delay(50)
         clock.tick(10)
-        redrawWindow(win)
+        redraw_window(win)
 
 
 main()
