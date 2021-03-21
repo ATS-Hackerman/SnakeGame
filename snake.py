@@ -105,8 +105,23 @@ class snake(object):
 
 
     def add_cube(self):
-        pass
+        tail = self.body[-1]
+        dx = tail.dirnx
+        dy = tail.dirny
 
+        if dx == 1 and dy == 0:
+            self.body.append(cube(tail.pos[0] - 1, tail.pos[1]))
+
+        elif dx == -1 and dy == 0:
+            self.body.append(cube(tail.pos[0] + 1, tail.pos[1]))
+
+        elif dx == 0 and dy == 1:
+            self.body.append(cube(tail.pos[0], tail.pos[1] - 1))
+
+        elif dx == 0 and dy == -1:
+            self.body.append(cube(tail.pos[0], tail.pos[1] + 1))
+
+            
 
     def draw(self, surface):
         for i, c in enumerate(self.body):
