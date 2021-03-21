@@ -139,8 +139,19 @@ def redraw_window(surface):
     pygame.display.update()
 
 
-def random_snack(rows, items):
-    pass
+def random_snack(rows, item):
+    global rows
+    positions = item.body
+
+    while True:
+        x = random.randrange(rows)
+        y = random.randrange(rows)
+        if len(list(filter(lambda z:z.pos == (x,y), positions))) > 0:
+            continue
+        else:
+            break
+
+    return (x,y)
 
 
 def main():
@@ -150,6 +161,7 @@ def main():
     rows = 20
     win = pygame.display.set_mode((width, height))
     s = snake ((255, 0, 0), (10, 10))
+    snack = cube(random_snack(rows, s), color = (102, 255, 102))
     flag = True
 
     clock = pygame.time.Clock()
@@ -158,6 +170,10 @@ def main():
         pygame.time.delay(50)
         clock.tick(10)
         s.move()
+        if body[0].pos == snack.pos:
+            s.add_cube()
+            snack = cube(random_snack(rows, s), color = (102, 255, 102))
+
         redraw_window(win)
 
 
