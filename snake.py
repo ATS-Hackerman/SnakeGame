@@ -177,6 +177,18 @@ def random_snack(rows, item):
     return (x,y)
 
 
+def meesage_box(subject, content):
+    root = tk.Tk()
+    root.attributes("-topmost", True)
+    root.withdraw()
+    messagebox.showinfo(subject, content)
+    try:
+        root.destroy()
+    except:
+        pass
+
+
+
 def main():
     global width, rows, s, snack
     width = 500
@@ -200,7 +212,7 @@ def main():
         for x in range(len(s.body)):
             if s.body[x].pos in list(map(lambda z:z.pos, s.body[x + 1:])):
                 print("Score: " + len(s.body))
-                message:box()
+                message:box("You lost", "Play again?")
                 s.reset((10, 10))
                 break
 
