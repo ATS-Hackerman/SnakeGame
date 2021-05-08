@@ -1,4 +1,4 @@
-# My aided attempt at making 'Snake' the game
+# My aided attempt at making the game 'Snake'
 _____________________________________________________
 First time trying out pygame,
 thought snake would be the most fitting.
